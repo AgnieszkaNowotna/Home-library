@@ -3,7 +3,7 @@ import json
 class Book:
     def __init__(self):
         try:
-            with open ("books.json", "r") as f:
+            with open ("books.json", "r", encoding = "UTF-8") as f:
                 self.library = json.load(f)
         except FileNotFoundError:
             self.library = []

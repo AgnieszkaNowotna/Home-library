@@ -1,24 +1,24 @@
 {% extends "parent.html" %}
 {% block content %}
-{% if error %}
-<div>{{error}}</div>
-{% endif %}
-<form method = "POST" action= "{{url_for('add')}}">
-    {{form.csfr_token}}
-    {{form.title.label}}
-    {{form.title}}<br>
-    {{form.author.label}}
-    {{form.author}}<br>
-    {{form.release_year.label}}
-    {{form.release_year}}<br>
-    {{form.genre.label}}
-    {{form.genre}}<br>
-    {{form.description.label}}
-    {{form.description}}<br>
-    {{form.readed.label}}
-    {{form.readed}}<br>
-    {{form.cover.label}}
-    {{form.cover}}<br>
-    <input type = "submit" value="Dodaj pozycję">
-</form>
+    {% if error %}
+        <div>{{error}}</div>
+    {% endif %}
+        <form method = "POST" action= "{{url_for('add')}}">
+            {{form.csfr_token}}
+            {{form.title.label}}
+            {{form.title}}<br>
+            {{form.author.label}}
+            {{form.author}}<br>
+            {{form.release_year.label}}
+            {{form.release_year}}<br>
+            {{form.genre.label}}
+            {{form.genre}}<br>
+            {{form.description.label}}
+            {{form.description}}<br>
+            {{form.readed.label}}
+            {{form.readed}}<br>
+            {{form.cover.label}}
+            {{form.cover}}<br>
+        <input type = "submit" value="Dodaj pozycję">
+    </form>
 {% endblock %}

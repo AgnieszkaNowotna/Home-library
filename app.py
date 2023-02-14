@@ -22,7 +22,7 @@ def add():
 
 @app.route('/book/show')
 def show():
-    return redirect (url_for("home"))
+    return render_template('library.html', book = book.all())
 
 @app.route('/book/comment')
 def comment():

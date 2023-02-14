@@ -1,0 +1,24 @@
+{% extends "parent.html" %}
+{% block content %}
+    {% for instance in book %}
+    <table>
+        <tr>
+            <td>
+                <img src ='/static/covers/{{instance.cover}}'>
+            <td>   
+            <div class = description>
+                <p>Tytuł: {{instance.title}}</p>
+                <p>Autor: {{instance.author}}</p>
+                <p>Rok wydania: {{instance.release_year}}</p>
+                <p>Gatunek: {{instance.genre}}</p>
+                <p>Opis książki: {{instance.description}}</p>
+                {% if instance.readed == True %}
+                    <p>Komentarz: {{instance.comment}}</p>
+                    <p>Ocena: {{instance.score}}</p>
+                {% endif %}
+            </div>
+            </td> 
+        </tr>
+    </table>   
+    {% endfor %}
+{% endblock %}
