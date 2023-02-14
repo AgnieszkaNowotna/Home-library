@@ -1,0 +1,15 @@
+{% extends "parent.html" %}
+{% block content %}
+        <div class="header">
+        <h1>Biblioteka domowa</h1>
+        </div>
+        <div class = 'add'>
+            <a href ="/book/add"><h2>Dodaj książkę</h2></a>
+        </div>
+        <div class = 'show'>
+            <a href ="{{url_for('show')}}"><h2>Pokaż bibliotekę</h2></a>
+        </div>
+        <div class = 'comment'>
+            <a href ="{{url_for('comment')}}"><h2>Oceń książkę</h2></a>
+        </div>
+{% endblock %}
