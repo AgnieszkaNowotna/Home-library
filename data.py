@@ -11,7 +11,7 @@ book = [
 'readed': True,
 'cover':'rok1984.jpg',
 'score':"",
-'comment':""
+'reviev':""
 },
 {
 'title':"Zabić drozda",
@@ -22,7 +22,7 @@ book = [
 'readed': True,
 'cover':'zabic_drozda.jpg',
 'score':"",
-'comment':""
+'reviev':""
 },
 {
 'title':"Duma i upredzenie",
@@ -33,7 +33,7 @@ book = [
 'readed': False,
 'cover':'duma_i_uprzedzenie.jpg',
 'score':"",
-'comment':""
+'reviev':""
 }
 ]
 
