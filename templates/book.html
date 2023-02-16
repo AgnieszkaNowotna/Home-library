@@ -1,7 +1,7 @@
 {% extends "parent.html" %}
 {% block content %}
 <div class = 'add'>
-    <a href ="/book/add"><h2>Dodaj książkę</h2></a>
+    <a href = "{{url_for('add')}}">Dodaj pozycję</a>
 </div>
     {% for instance in book %}
     <table>
@@ -14,12 +14,12 @@
                 <p>Autor: {{instance.author}}</p>
                 <p>Rok wydania: {{instance.release_year}}</p>
                 <p>Gatunek: {{instance.genre}}</p>
-                <p>Opis książki: {{instance.description}}</p>
+                <p>Opis książki: {{instance.description}}</p>   
                 {% if instance.readed == True %}
                     <p>Recenzja: {{instance.reviev}}</p>
                     <p>Ocena: {{instance.score}}</p>
                 {% endif %}
-                <a href = "/book/reviev/{{instance.title}}">Edytuj pozycję</a>
+                <a href = "{{url_for('reviev', book_title = instance.title)}}">Edytuj pozycję</a>
             </div>
             </td> 
         </tr>

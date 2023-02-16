@@ -1,4 +1,6 @@
 import json
+from werkzeug.utils import secure_filename
+import os
 
 class Book:
     def __init__(self):
@@ -7,7 +9,7 @@ class Book:
                 self.library = json.load(f)
         except FileNotFoundError:
             self.library = []
-    
+
     def all(self):
         return self.library
     
@@ -26,8 +28,8 @@ class Book:
         data.pop('csrf_token')
         self.library.append(data)
 
-    def save_all(self, filename):
-        with open(filename, "w", encoding="UTF-8")as f:
+    def save_all(self):
+        with open("books.json", "w", encoding="UTF-8")as f:
             json.dump(self.library, f, ensure_ascii=False)
 
     def update(self, id, data):
@@ -35,8 +37,15 @@ class Book:
         self.library[id] = data
         self.save_all()
 
+    def image(self, form, app_name, data):
+        f = form.cover.data
+        filename = secure_filename(f.filename)
+        f.save(os.path.join(app_name.static_folder,'covers', filename))
+        cover = str(data['cover'])
+        replace_name = cover.split(" ")
+        data['cover'] = replace_name[1][1:-1]
+        print(data)
+        return data
+
 book = Book()
 
-def save_to_json(filename, value):
-    with open(filename, "w", encoding="UTF-8")as f:
-        json.dump(value,f, ensure_ascii=False)
