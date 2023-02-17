@@ -18,10 +18,10 @@ def get_book(book_id):
 
 @app.route("/api/v1/books/", methods=['POST'])
 def create_book():
-    if not request.json or not ('title' and 'author') in request.json:
+    if not request.json or not 'title' or not 'author' in request.json:
         abort(400)
     book = {
-            'id':len(books.all())+1,
+            'id':books.all()[-1]['id'] + 1,
             'title':request.json['title'],
             'author':request.json['author'],
             'release_year':request.json.get('release_year', ""),
@@ -31,7 +31,7 @@ def create_book():
             'cover':request.json.get('cover', "brak_okładki.jpg"),
             'reviev':request.json.get('reviev', ""),
             'score':request.json.get('score', ""),
-            },
+            }
     books.create(book)
     return jsonify({'book':book}),201
 
