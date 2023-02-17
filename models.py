@@ -37,15 +37,18 @@ class Book:
         self.library[id] = data
         self.save_all()
 
-    def image(self, form, app_name, data):
-        f = form.cover.data
-        filename = secure_filename(f.filename)
-        f.save(os.path.join(app_name.static_folder,'covers', filename))
-        cover = str(data['cover'])
-        replace_name = cover.split(" ")
-        data['cover'] = replace_name[1][1:-1]
-        print(data)
-        return data
+    def image_to_string(self, form, path, data, alternate_cover):
+        try:
+            f = form.cover.data
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(path, filename))
+            cover = str(data['cover'])
+            replace_name = cover.split(" ")
+            data['cover'] = replace_name[1].replace('"','')
+            return data
+        except FileNotFoundError:
+            data['cover'] = alternate_cover
+            return data
 
 book = Book()
 

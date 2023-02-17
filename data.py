@@ -24,7 +24,7 @@ book = [
 'score':9,
 },
 {
-'title':"Duma i upredzenie",
+'title':"Duma i uprzedzenie",
 'author':"Jane Austen",
 'release_year':"1813",
 'genre':"Obyczajowa",

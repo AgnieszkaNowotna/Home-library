@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, redirect, url_for, redirect
 from forms import BookForm
 from models import book
+import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "kdfjkldsfl"
+app.config['UPLOAD_PATH'] = os.path.join(app.static_folder, 'covers')
 
 @app.route('/book/')
 def home():
@@ -13,10 +15,10 @@ def home():
 def add():
     form = BookForm()
     error=""
+    alternate_cover = 'brak_okładki.jpg'
     if request.method == 'POST':
         if form.validate_on_submit():
-            data = book.image(form, app, (form.data))
-            print(data)
+            data = book.image_to_string(form, app.config['UPLOAD_PATH'], (form.data), alternate_cover)
             book.create(data)
             book.save_all()
         return redirect(url_for('home'))
@@ -28,11 +30,14 @@ def reviev(book_title):
     title = book_title
     book_id = book.get_id(title)
     position = book.get(book_id)
+    alternate_cover = position['cover']
     form = BookForm(data = position)
+    print(alternate_cover)
 
     if request.method == "POST":
         if form.validate_on_submit():
-            book.update(book_id, form.data)
+            data = book.image_to_string(form, app.config['UPLOAD_PATH'], (form.data), alternate_cover)
+            book.update(book_id, data)
         return redirect(url_for('home'))
 
     return render_template("reviev.html", form = form,  book_title = book_title)
