@@ -1,13 +1,15 @@
 {% extends "parent.html" %}
 {% block content %}
 <div class = 'add'>
-    <a href = "{{url_for('add')}}">Dodaj pozycję</a>
+    <a href = "{{url_for('add')}}"><img src="{{url_for('static', filename = 'book.jpg')}}"></a><br>
+    <h2>Dodaj pozycję</h2>
 </div>
     {% for instance in book %}
-    <table>
+    <table class = "basic_table">
         <tr>
             <td>
-                <img src ='/static/covers/{{instance.cover}}'>
+                <img class = 'cover', src ='/static/covers/{{instance.cover}}'>
+            </td>
             <td>   
             <div class = description>
                 <p>Tytuł: {{instance.title}}</p>
@@ -19,10 +21,14 @@
                     <p>Recenzja: {{instance.reviev}}</p>
                     <p>Ocena: {{instance.score}}</p>
                 {% endif %}
-                <a href = "{{url_for('reviev', book_title = instance.title)}}">Edytuj pozycję</a>
             </div>
             </td> 
+            <td>
+                <a href = "{{url_for('reviev', book_title = instance.title)}}"><img src="{{url_for('static', filename = 'book1.jpg')}}"></a>
+                <h3>Edytuj pozycję</h3>
+            </td>
         </tr>
-    </table>   
+    </table>
+   
     {% endfor %}
 {% endblock %}

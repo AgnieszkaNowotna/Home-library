@@ -2,6 +2,7 @@ import json
 
 book = [
 {
+'id': 1,
 'title':"Rok 1984",
 'author':"George Orwell",
 'release_year':1949,
@@ -13,6 +14,7 @@ book = [
 'score':10,
 },
 {
+'id': 2,
 'title':"Zabić drozda",
 'author':"Charper Lee",
 'release_year':1960,
@@ -24,6 +26,7 @@ book = [
 'score':9,
 },
 {
+'id': 3,
 'title':"Duma i uprzedzenie",
 'author':"Jane Austen",
 'release_year':"1813",
