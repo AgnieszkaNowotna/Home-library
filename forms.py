@@ -15,4 +15,4 @@ class BookForm(FlaskForm):
     readed = BooleanField('Czy przeczytana', validators = [Optional()])
     cover = FileField('Okładka książki', validators = [Optional()])
     reviev = TextAreaField('Recenzja', default = "-", validators = [Optional()])
-    score = IntegerField('Ocena', validators =[Optional(), NumberRange( min = 0, max = 10,)])
+    rate = IntegerField('Ocena', validators =[Optional(), NumberRange( min = 0, max = 10,)])
